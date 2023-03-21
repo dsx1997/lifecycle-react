@@ -17,12 +17,7 @@ class Game extends React.Component {
     return (
       <div className="game">
         <div className="game-board">          
-          <Title titleInfo={titleInfo} titleId={0}/>  
-          <BuiltInMethod funcName={funcName} funcId={0} />
-          <Title titleInfo={titleInfo} titleId={1}/>  
-          <BuiltInMethod funcName={funcName} funcId={1} />
-          <Title titleInfo={titleInfo} titleId={2}/>  
-          <BuiltInMethod funcName={funcName} funcId={2} />
+          <Tutorial titleInfo={titleInfo} funcName={funcName}/>  
         </div>
       </div>
     );
@@ -67,6 +62,18 @@ function BuiltInMethod(props) {
     return (
       <div className='one-phase'><ul>{fList}</ul></div>
     );
+}
+
+function Tutorial(props) {
+  const tutorialcontent = props.titleInfo.map((step, no) => {
+    return (
+      <>
+        <Title titleInfo={props.titleInfo} titleId={no}/>  
+        <BuiltInMethod funcName={props.funcName} funcId={no} />
+      </>
+    );
+  });
+  return tutorialcontent;
 }
 
 // ========================================
